@@ -1,0 +1,5 @@
+## Interface: 11302
+## Title: PortalWh*re
+## Notes: A portal mage's best friend
+
+Core.lua
