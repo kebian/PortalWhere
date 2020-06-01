@@ -33,7 +33,7 @@ function PortalWhere:Boot()
 end
 
 function PortalWhere:ADDON_LOADED(name)
-    if name == "PortalWh*re" then
+    if name == "PortalWhere" then
         self:OnBoot()
     end
 end
@@ -42,7 +42,7 @@ function PortalWhere:RegisterSlashCommand()
     SLASH_PORTALWHERE1 = "/pw"
     SLASH_PORTALWHERE2 = "/portalwhere"
     SlashCmdList["PORTALWHERE"] = function(msg)
-        local _, _, command, args - string.find(msg, "%s?(%w+)%s?(.*)")
+        local _, _, command, args = string.find(msg, "%s?(%w+)%s?(.*)")
         if command then
             self:OnSlashCommand(command, args)
         end
@@ -124,13 +124,13 @@ function PortalWhere:WantsPortal(playerName, guid, message)
         return false
     end
     
-    local _, playerClass = GetPlayerInfo(guid)
+    local _, playerClass = GetPlayerInfoByGUID(guid)
     if playerClass == "MAGE" then
         return false
     end
 
     for word in string.gmatch(message, "%a+") do
-        local match, destination = self:matchWordToDestination(word)
+        local match, destination = self:MatchWordToDestination(word)
         if match then
             return match, destination
         end
