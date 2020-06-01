@@ -22,7 +22,7 @@ PortalWhere.matchWords = {
 }
 
 function PortalWhere:Print(...)
-    print("[PortalWh*re] " .. ...)
+    print("[PortalWh*re]", ...)
 end
 
 function PortalWhere:Boot()
